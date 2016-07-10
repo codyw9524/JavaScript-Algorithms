@@ -1,4 +1,5 @@
-//Given a string, return a string with only the unique characters. (Ex: "Mississippi" to "Misp")
+//Given a string, return a string with only the 
+//unique characters. (Ex: "Mississippi" to "Misp")
 
 function unique(str){
 	var newStr = str[0];

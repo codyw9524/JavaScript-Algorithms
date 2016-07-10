@@ -6,7 +6,7 @@ function mergeSort(arr){
 		return arr;
 	}
 	for(var i = 0; i < length; i++){
-		if(i < length/2){
+		if(i < length / 2){
 			left.push(arr[i]);
 		} else {
 			right.push(arr[i]);
