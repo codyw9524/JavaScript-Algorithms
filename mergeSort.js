@@ -1,17 +1,10 @@
 function mergeSort(arr){
 	var length = arr.length;
-	var left = [];
-	var right = [];
 	if(length < 2){
 		return arr;
 	}
-	for(var i = 0; i < length; i++){
-		if(i < length / 2){
-			left.push(arr[i]);
-		} else {
-			right.push(arr[i]);
-		}
-	}
+	var left = arr.splice(0, length / 2);
+	var right = arr.splice(0);
 	return merge(mergeSort(left), mergeSort(right));
 }
 

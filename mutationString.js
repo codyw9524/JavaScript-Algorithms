@@ -4,7 +4,7 @@
 
 function mutate(arr){
 	for(i in arr){
-		arr[i] = arr[i].toLowerCase;
+		arr[i] = arr[i].toLowerCase();
 	}
 
 	//longer version
@@ -22,8 +22,8 @@ function mutate(arr){
 	// return true;
 
 	//shorter version
-	for(var i = 0; i < arr[1].length; i++){
-		if(arr[0].indexOf(arr[1][i]) < 0){
+	for(var j = 0; j < arr[1].length; i++){
+		if(arr[0].indexOf(arr[1][j]) < 0){
 			return false;
 		}
 	}

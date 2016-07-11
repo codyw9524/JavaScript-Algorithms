@@ -10,3 +10,6 @@ function truncate(str, num){
 	str += "..."
 	return str;
 }
+
+var result = truncate("A-1", 1)
+console.log(result);
