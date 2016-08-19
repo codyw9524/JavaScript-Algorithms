@@ -1,14 +1,9 @@
 function rFibonacci(num){
-	if(num === 0){
-		return 0;
+	if(num == 0 || num == 1){
+		return num;
 	}
-	else if(num === 1){
-		return 1;
-	}
-	else{
-		return rFibonacci(num - 2) + rFibonacci(num - 1);
-	}
+	return rFibonacci(num - 2) + rFibonacci(num - 1);
 }
 
-var result = rFibonacci(6);
+var result = rFibonacci(2);
 console.log(result);

@@ -1,7 +1,5 @@
 function flatten(arr, newArr){
-	if(newArr === undefined){
-		newArr = [];
-	}
+	newArr = newArr || [];
 	for(var i = 0; i < arr.length; i++){
 		if(Array.isArray(arr[i])){
 			flatten(arr[i], newArr);

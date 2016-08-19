@@ -7,7 +7,7 @@ function maxMinAvg(arr){
 	var sum = 0;
 	var max = arr[0];
 	var min = arr[0];
-	for(var i = 0; i < length; i ++){
+	for(var i = 0; i < length; i++){
 		sum += arr[i];
 		if(arr[i] > max){
 			max = arr[i];

@@ -8,7 +8,7 @@
 // Make sure your solution is recursive.
 
 function rFactorial(num){
-	if(num === 1){
+	if(num === 1 || num === 0){
 		return 1;
 	} else {
 		return rFactorial(num - 1) * num;

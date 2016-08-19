@@ -152,12 +152,15 @@ Set.prototype.subset = function(set) {
 		}
 	}
 	return true;
+	// return check;
 }
 
 a = new Set()
 a.add(5).add(6).add(7)
 b = new Set()
 b.add(9).add(5)
+console.log('Set A: ', a)
+console.log('Set B: ', b)
 console.log('is b a subset of a?', a.subset(b))
 console.log('A union of B:', a.union(b))
 console.log('A difference of B:', a.difference(b))

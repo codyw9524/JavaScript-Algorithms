@@ -18,8 +18,15 @@ function removeNegatives(arr){
 	while(count--){
 		arr.pop();
 	}
-	return arr
+	return arr;
 }
 
-var result = removeNegatives([0,-1,2,-3,4,-5,6])
+function removeNegativesShorthand(arr){
+	return arr.filter(function(num){
+		if(num == 0) return 0;
+		else if(num > -1) return num;
+	});
+}
+
+var result = removeNegativesShorthand([0,-1,2,-3,4,-5,6])
 console.log(result);

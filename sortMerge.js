@@ -4,8 +4,7 @@ function mergeSort(arr){
 		return arr;
 	}
 	var left = arr.splice(0, length / 2);
-	var right = arr.splice(0);
-	return merge(mergeSort(left), mergeSort(right));
+	return merge(mergeSort(left), mergeSort(arr));
 }
 
 function merge(left, right){
@@ -25,5 +24,9 @@ function merge(left, right){
 	}
 }
 
-var result = mergeSort([9,8,7,6,5,4,3,2,1]);
+var result = mergeSort([9,8,7,6,5,4,3,2,1]); //worst case
+var result2 = mergeSort([1,2,3,4,5,6,7,8,9]); //best case 
+var result3 = mergeSort([13,55,61,1,9,3,50,78,41,29,8]); //random
 console.log(result);
+console.log(result2);
+console.log(result3);

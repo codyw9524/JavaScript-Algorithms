@@ -1,13 +1,12 @@
 function quickSort(arr) {
 	var pivot;
-	var l_arr = []
-	var g_arr = []
-	console.log(arr);
+	var l_arr = [];
+	var g_arr = [];
 	if(arr.length < 2){
-		return arr
+		return arr;
 	}
 	pivot = arr[0];
-	for (var i = 1; i < arr.length; i++){
+	for(var i = 1; i < arr.length; i++){
 		if(arr[i] > pivot){
 			g_arr.push(arr[i]);
 		} else {
@@ -16,5 +15,5 @@ function quickSort(arr) {
 	}
 	return quickSort(l_arr).concat(pivot).concat(quickSort(g_arr));
 }
-var result = quickSort([8,7,6,5,4,3,2,1])
-console.log(result)
+var result = quickSort([8,7,6,5,4,3,2,1]);
+console.log(result);

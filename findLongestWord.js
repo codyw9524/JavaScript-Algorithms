@@ -2,7 +2,7 @@ function longestWord(str){
 	var arr = str.split(' ');
 	str = arr[0];
 	for(var i = 1; i < arr.length; i++){
-		if(arr[i].length < str.length){
+		if(arr[i].length > str.length){
 			str = arr[i];
 		}
 	}
