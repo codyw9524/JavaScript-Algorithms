@@ -1,10 +1,6 @@
 function rStrSub(str, sub, arr){
-	if(!sub){
-		sub = "";
-	}
-	if(!arr){
-		arr = [];
-	}
+	sub = sub || "";
+	arr = arr || [];
 	if(str.length === 0){
 		arr.push(sub);
 	} else {
@@ -15,8 +11,8 @@ function rStrSub(str, sub, arr){
 	return arr;
 }
 
-// var result = rStrSub('abc');
-// console.log(result);
+var result = rStrSub('abc');
+console.log(result);
 
 function useStringSub(arr){
 	arr = arr.join('');
@@ -39,15 +35,14 @@ function rArrSub(arr, sub, output){
 		newArr = arr.slice(1)
 		newArr2 = arr.slice(1)
 		rArrSub(newArr, sub.slice(0), output);
-		console.log(arr[0])
 		sub2.push(arr[0]);
 		rArrSub(newArr2, sub2.slice(0), output);
 	}
 	return output;
 }
-var arr = [1,7,2,4];
-result3 = hackerRank(arr, 3);
-console.log(result3);
+// var arr = [1,7,2,4];
+// result3 = hackerRank(arr, 3);
+// console.log(result3);
 
 function hackerRank(arr, x){
 	arr = rArrSub(arr);

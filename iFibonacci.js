@@ -30,4 +30,14 @@ function iFibonacci(num){
 	}
 }
 
+
+function iFib(num) {
+    var fib = [0, 1];
+    for(i = 0; i < num; i++) {
+        fib.push(fib[0] + fib[1]);
+        fib.shift();
+    }
+    return fib[0];
+}
+
 console.log(iFibonacci(6));

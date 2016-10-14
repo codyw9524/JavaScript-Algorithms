@@ -163,8 +163,3 @@ a.grow();
 console.log("\n")
 console.log(a.table)
 a.loadFactor()
-
-
-
-
-
