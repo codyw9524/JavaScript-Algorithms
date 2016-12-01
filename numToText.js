@@ -32,7 +32,7 @@ function numToText(num){
 		'7' : 'seven hundred',
 		'8' : 'eight hundred',
 		'9' : 'nine hundred',
-	}
+	};
 	var teens = {
 		'1': 'eleven',
 		'2' : 'twelve',
@@ -45,7 +45,7 @@ function numToText(num){
 		'9' : 'nineteen',
 	};
 	var library = [ones, tens, hundreds];
-	var places = ['', ' thousand ', ' million ', ' billion ',' trillion '];
+	var places = ['', ' thousand ', ' million ', ' billion ',' trillion ', ' quadrillion ', ' quintillion ', ' sextillion ', ];
 	num = breakIntoThrees(num);
 	for(let i = 0; i < num.length; i++){
 		output = threeToText(num[i], library, teens) + places[i] + output;
@@ -57,7 +57,7 @@ function breakIntoThrees(num){
 	var output = [];
 	num = num.toString();
 	while(num.length > 3){
-		output.push(num.slice(-3))
+		output.push(num.slice(-3));
 		num = num.slice(0, num.length - 3);
 	}
 	output.push(num);
@@ -65,7 +65,7 @@ function breakIntoThrees(num){
 }
 
 function threeToText(str, library, teens){
-	var output = ''
+	var output = '';
 	var length = str.length;
 	let j = 0;
 	for(let i = length - 1; i > -1; i--){
@@ -77,9 +77,9 @@ function threeToText(str, library, teens){
 		if(str[i] in library[j]){
 			output = library[j][str[i]] + ' ' + output;
 		}
-		j++;
+, 		j++;
 	}
 	return output;
 }
 
-console.log(numToText(Math.pow(37,8)));
+console.log(numToText(Math.pow(37,14)));

@@ -188,16 +188,32 @@ binarySearchTree.prototype.isValid = function(node=this.root){
   return true;
 }
 
-describe('bst', function(){
-	it('has a valid tree', function(){
-		a = new binarySearchTree();
-		a.add(100).add(50).add(40).add(1).add(125).add(150).add(140);
-		a.add(60).add(120);
-		expect(a.isBalanced()).toBe(true);
-	})
-	it('does not have a valid tree', function(){
-		a = new binarySearchTree();
-		a.add(100).add(50).add(40).add(1).add(125).add(150).add(140);
-		expect(a.isBalanced()).toBe(false);
-	})
-})
+function arrayToBST(arr, output=new binarySearchTree()){
+	if(arr.length == 0){
+		return;
+	}
+	let middle = Math.floor(arr.length / 2);
+	let left = arr.slice(0, middle);
+	let right = arr.slice(middle + 1);
+	output.add(arr[middle]);
+	arrayToBST(left, output);
+	arrayToBST(right, output);
+	return output;
+}
+
+let a = arrayToBST([1,2,3,4,5,6,7,8,9,10]);
+console.log(a.isBalanced());
+
+// describe('bst', function(){
+// 	it('has a valid tree', function(){
+// 		a = new binarySearchTree();
+// 		a.add(100).add(50).add(40).add(1).add(125).add(150).add(140);
+// 		a.add(60).add(120);
+// 		expect(a.isBalanced()).toBe(true);
+// 	})
+// 	it('does not have a valid tree', function(){
+// 		a = new binarySearchTree();
+// 		a.add(100).add(50).add(40).add(1).add(125).add(150).add(140);
+// 		expect(a.isBalanced()).toBe(false);
+// 	})
+// })

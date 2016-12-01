@@ -28,5 +28,5 @@ function removeNegativesShorthand(arr){
 	});
 }
 
-var result = removeNegativesShorthand([0,-1,2,-3,4,-5,6])
+var result = removeNegatives([0,-1,2,-3,4,-5,6])
 console.log(result);

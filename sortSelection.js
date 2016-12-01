@@ -1,10 +1,10 @@
 function selectionSort(arr){
-	var length = arr.length;
-	var min;
-	var temp;
-	for(var i = 0; i < length; i++){
+	let length = arr.length;
+	let min;
+	let temp;
+	for(let i = 0; i < length; i++){
 		min = i;
-		for(var j = i; j < length; j++){
+		for(let j = i; j < length; j++){
 			if(arr[j] < arr[min]){
 				min = j;
 			}

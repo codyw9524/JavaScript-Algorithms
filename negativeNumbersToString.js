@@ -8,7 +8,7 @@ function negative(array){
 	var length = array.length;
 	for(var i = 0; i < length; i++){
 		if(array[i] < 0){
-			array[i] = 'Dojo'
+			array[i] = 'Dojo';
 		}
 	}
 	return array;

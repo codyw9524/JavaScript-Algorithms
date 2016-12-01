@@ -7,6 +7,6 @@ function arrayAverage(arr){
 	return sum / length;
 }
 
-var array = [10,20,30,40,50]
-var result = arrayAverage(array);
-console.log(result);
+// var array = [10,20,30,40,50]
+// var result = arrayAverage(array);
+// console.log(result);

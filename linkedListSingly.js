@@ -3,8 +3,12 @@ function ListNode(value){
 	this.next = null;
 }
 
-function SinglyLinkedList(){
-	this.head = null;
+function SinglyLinkedList(value){
+	if(value){
+		this.head = new ListNode(value);
+	} else {
+		this.head = null;
+	}
 	this.tail = null;
 	this.nodeCount = 0;
 }
@@ -83,13 +87,11 @@ SinglyLinkedList.prototype.display = function(){
 	return this;
 }
 
-SinglyLinkedList.prototype.min = function(returnValue){
-	returnValue = returnValue || false;
+SinglyLinkedList.prototype.min = function(current=this.head, returnValue=false){
 	if(!this.head){
 		return null;
 	}
-	var current = this.head;
-	var min = current;
+	let min = current;
 	while(current){
 		if(current.value < min.value){
 			min = current;
@@ -437,12 +439,81 @@ SinglyLinkedList.prototype.rLength = function(node, count){
 	}
 }
 
+SinglyLinkedList.prototype.bubbleSort = function(){
+	if(!this.head || !this.head.next){
+		return null;
+	}
+	let prev;
+	let turtle;
+	let hare;
+	let isSorted = false;
+	while(!isSorted){
+		if(this.head.value > this.head.next.value){
+			let temp = this.head;
+			let temp2 = this.head.next.next;
+			this.head = this.head.next;
+			this.head.next = temp;
+			temp.next = temp2;
+		}
+		prev = this.head;
+		turtle = this.head.next;;
+		hare = this.head.next.next;
+		isSorted = true;
+		while(hare){
+			if(turtle.value > hare.value){
+				let temp = turtle;
+				prev.next = hare
+				turtle.next = hare.next;
+				hare.next = turtle;
+				isSorted = false;
+			}
+			prev = turtle;
+			turtle = hare;
+			hare = hare.next;
+		}
+	}
+	this.setTail();
+	return this;
+}
+
+SinglyLinkedList.prototype.selectionSort = function(){
+	if(!this.head){ return null; }
+	let sortedPortion = this.head;
+	while(sortedPortion.next){
+		let minNode = this.min(sortedPortion);
+		temp = sortedPortion.value;
+		sortedPortion.value = minNode.value;
+		minNode.value = temp;
+		sortedPortion = sortedPortion.next;
+	}
+	return this;
+}
+
+SinglyLinkedList.prototype.quickSort = function(pivot=this.head){
+	if(!pivot || !pivot.next){
+		return this;
+	}
+	let left = new SinglyLinkedList();
+	let right = new SinglyLinkedList();
+	let current = pivot.next;
+	while(current){
+		if(current.value > pivot.value){
+			right.addBack(current.value)
+		} else {
+			left.addBack(current.value);
+		}
+		current = current.next;
+	}
+	left.setTail();
+	right.setTail();
+	return this.quickSort(left).addBack(pivot.value).concat(this.quickSort(right.head));
+}
+
+
 var a = generateRandomList();
 console.log(a);
-a.display()
-console.log('********');
-console.log('FUNCTION', a.rLength());
-
-
-
-
+a.display();
+console.log('***** SORTING *****');
+let b = a.quickSort();
+console.log(b);
+b.display();

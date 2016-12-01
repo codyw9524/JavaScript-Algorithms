@@ -1,3 +1,5 @@
+// require('stack.js')
+
 function circleQueue(n){
 	this.head = -1;
 	this.tail = -1;
@@ -50,26 +52,99 @@ circleQueue.prototype.isEmpty = function(){
 		return false;
 	}
 }
- circleQueue.prototype.grow = function(size){
- 	this.capacity = size;
- }
-
-var cq = new circleQueue(5);
-
-for(let i = 0; i < 6; i++){
-	cq.enqueue(6);
-}
-// cq.enqueue(1).enqueue(2).enqueue(3).enqueue(4).enqueue(5).enqueue(6);
-console.log(cq)
-cq.grow(20);
-console.log(cq)
-
-for(let i = 0; i < 20; i++){
-	cq.enqueue(20);
+circleQueue.prototype.grow = function(size){
+	let end = this.capacity; 
+	this.capacity = size;
+	for(let i = 0; i < this.head; i++){
+		let node = this.dataStore[i];
+		if(node){
+			this.dataStore[end] = node;
+			this.dataStore[i] = null;
+			end++;
+		}
+	}
+	this.tail = end - 1;
 }
 
-console.log(cq)
-console.log(cq.isFull());
+circleQueue.prototype.reorderAbsolute = function(){
+	let stack = [];
+	for(let i = 0; i < this.dataStore.length; i++){
+		let node = this.dataStore[i];
+		if(node >= 0){
+			this.enqueue(this.dequeue())
+		} else {
+			stack.push(this.dequeue())
+		}
+	}
+	while(stack.length != 0){
+		this.enqueue(stack.pop())
+	}
+	for(let i = 0; i < this.dataStore.length; i++){
+		let node = this.dataStore[i];
+		if(node >= 0){
+			stack.push(this.dequeue())
+		}
+	}
+	while(stack.length != 0){
+		this.enqueue(stack.pop())
+	}
+	let originalTail = this.tail;
+	for(let i = this.head; i != originalTail; i++){
+	  if(i == this.dataStore.length){
+	    i = 0;
+	  }
+		let node = this.dataStore[i];
+	  if(node >= 0){
+	  	stack.push(this.dequeue())
+	  } else {
+	  	this.enqueue(this.dequeue())
+	  }
+  }
+  if(this.dataStore[this.head] >= 0){
+  	stack.push(this.dequeue())
+  }
+  while(stack.length != 0){
+  	this.enqueue(stack.pop());
+  }
+	console.log('CQ : ', this.dataStore);
+	console.log(' S : ', stack);
+	return this;
+}
+
+var cq = new circleQueue(7);
+cq.enqueue(-10)
+cq.enqueue(20)
+cq.enqueue(-20)
+cq.enqueue(-30)
+cq.enqueue(40)
+cq.enqueue(-40)
+cq.enqueue(50)
 cq.dequeue()
-console.log(cq)
+cq.dequeue()
+cq.enqueue(100)
+cq.grow(20)
+cq.enqueue(150)
+cq.enqueue(200)
+cq.enqueue(200)
+cq.enqueue(200)
+cq.enqueue(200)
+cq.enqueue(200)
+cq.enqueue(200)
+cq.enqueue(200)
+cq.enqueue(200)
+cq.enqueue(200)
+cq.enqueue(200)
+cq.enqueue(200)
+cq.enqueue(200)
+cq.enqueue(200)
+console.log(cq);
+
+// cq.reorderAbsolute();
+
+
+
+
+
+
+
 

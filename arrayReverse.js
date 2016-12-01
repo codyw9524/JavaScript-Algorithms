@@ -6,10 +6,10 @@
 
 function reverseArray(arr){
 	var length = arr.length;
-	for(var i = 0; i < length / 2; i++){
+	for(var i = 0; i < Math.floor(length / 2); i++){
 		temp = arr[i];
 		arr[i] = arr[length - 1 - i];
-		arr[length - 1- i] = temp;
+		arr[length - 1 - i] = temp;
 	}
 	return arr;
 }
