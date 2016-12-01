@@ -6,6 +6,7 @@ function circleQueue(n){
 	this.dataStore = [];
 	this.capacity = n;
 }
+
 circleQueue.prototype.enqueue = function(value){
 	if(this.isFull()){
 		console.log('Cannot enqueue ' + value + '.  Queue is FULL.');
@@ -23,8 +24,9 @@ circleQueue.prototype.enqueue = function(value){
 	this.dataStore[this.tail] = value;
 	return this;
 }
+
 circleQueue.prototype.dequeue = function(){
-	var output = this.dataStore[this.head];
+	let output = this.dataStore[this.head];
 	this.dataStore[this.head] = null;
 	if(this.tail == this.head){
 		this.head = -1;
@@ -37,6 +39,7 @@ circleQueue.prototype.dequeue = function(){
 	}
 	return output;
 }
+
 circleQueue.prototype.isFull = function(){
 	if((this.head == 0 && this.tail == this.capacity - 1) || (this.head == this.tail + 1)){
 		return true;
@@ -52,6 +55,7 @@ circleQueue.prototype.isEmpty = function(){
 		return false;
 	}
 }
+
 circleQueue.prototype.grow = function(size){
 	let end = this.capacity; 
 	this.capacity = size;
@@ -113,30 +117,30 @@ circleQueue.prototype.reorderAbsolute = function(){
 
 var cq = new circleQueue(7);
 cq.enqueue(-10)
-cq.enqueue(20)
-cq.enqueue(-20)
-cq.enqueue(-30)
-cq.enqueue(40)
-cq.enqueue(-40)
-cq.enqueue(50)
-cq.dequeue()
-cq.dequeue()
-cq.enqueue(100)
-cq.grow(20)
-cq.enqueue(150)
-cq.enqueue(200)
-cq.enqueue(200)
-cq.enqueue(200)
-cq.enqueue(200)
-cq.enqueue(200)
-cq.enqueue(200)
-cq.enqueue(200)
-cq.enqueue(200)
-cq.enqueue(200)
-cq.enqueue(200)
-cq.enqueue(200)
-cq.enqueue(200)
-cq.enqueue(200)
+// cq.enqueue(20)
+// cq.enqueue(-20)
+// cq.enqueue(-30)
+// cq.enqueue(40)
+// cq.enqueue(-40)
+// cq.enqueue(50)
+// cq.dequeue()
+// cq.dequeue()
+// cq.enqueue(100)
+// cq.grow(20)
+// cq.enqueue(150)
+// cq.enqueue(200)
+// cq.enqueue(200)
+// cq.enqueue(200)
+// cq.enqueue(200)
+// cq.enqueue(200)
+// cq.enqueue(200)
+// cq.enqueue(200)
+// cq.enqueue(200)
+// cq.enqueue(200)
+// cq.enqueue(200)
+// cq.enqueue(200)
+// cq.enqueue(200)
+// cq.enqueue(200)
 console.log(cq);
 
 // cq.reorderAbsolute();
