@@ -64,10 +64,18 @@ circleQueue.prototype.grow = function(size){
 		if(node){
 			this.dataStore[end] = node;
 			this.dataStore[i] = null;
-			end++;
+			if(end == this.capacity - 1){
+				end = 0;
+			} else {
+				end++;
+			}
 		}
 	}
-	this.tail = end - 1;
+	if(end == 0){
+		this.tail = end
+	} else {
+		this.tail = end - 1;
+	}
 }
 
 circleQueue.prototype.reorderAbsolute = function(){
@@ -117,16 +125,18 @@ circleQueue.prototype.reorderAbsolute = function(){
 
 var cq = new circleQueue(7);
 cq.enqueue(-10)
-// cq.enqueue(20)
-// cq.enqueue(-20)
-// cq.enqueue(-30)
-// cq.enqueue(40)
-// cq.enqueue(-40)
-// cq.enqueue(50)
-// cq.dequeue()
-// cq.dequeue()
-// cq.enqueue(100)
-// cq.grow(20)
+cq.enqueue(20)
+cq.enqueue(-20)
+cq.enqueue(-30)
+cq.enqueue(40)
+cq.enqueue(-40)
+cq.enqueue(50)
+cq.dequeue()
+cq.dequeue()
+cq.enqueue(100)
+cq.enqueue(100)
+console.log(cq);
+cq.grow(8)
 // cq.enqueue(150)
 // cq.enqueue(200)
 // cq.enqueue(200)
