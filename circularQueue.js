@@ -81,7 +81,7 @@ circleQueue.prototype.grow = function(size){
 circleQueue.prototype.reorderAbsolute = function(){
 	let stack = [];
 	let tail = this.tail;
-	while(true){
+	while(this.head != tail){
 		let node = this.dataStore[this.head];
 		if(node >= 0){
 			this.enqueue(this.dequeue());
