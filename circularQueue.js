@@ -81,16 +81,19 @@ circleQueue.prototype.grow = function(size){
 circleQueue.prototype.reorderAbsolute = function(){
 	let stack = [];
 	let tail = this.tail;
-	while(true){
+	while(this.head != tail){
 		let node = this.dataStore[this.head];
 		if(node >= 0){
 			this.enqueue(this.dequeue());
 		} else {
 			stack.push(this.dequeue());
 		}
-		if(this.head == tail){
-			break;
-		}
+	}
+	if(this.dataStore[this.head] >= 0){
+		this.enqueue(this.dequeue());
+	}
+	if(stack.length == 0){
+		return this;
 	}
 	while(stack.length != 0){
 		this.enqueue(stack.pop());
@@ -112,38 +115,14 @@ circleQueue.prototype.display = function(){
 }
 
 var cq = new circleQueue(7);
-cq.enqueue(-10)
-cq.enqueue(-20)
-cq.enqueue(-20)
-cq.enqueue(-30)
-cq.enqueue(-40)
-cq.enqueue(-40)
-cq.enqueue(-50)
+cq.enqueue(-10);
+cq.enqueue(20);
+cq.enqueue(-20);
+cq.enqueue(-30);
+cq.enqueue(40);
+cq.enqueue(-40);
+cq.enqueue(50);
 console.log(cq);
 cq.reorderAbsolute();
-// cq.grow(8)
-// cq.enqueue(150)
-// cq.enqueue(200)
-// cq.enqueue(200)
-// cq.enqueue(200)
-// cq.enqueue(200)
-// cq.enqueue(200)
-// cq.enqueue(200)
-// cq.enqueue(200)
-// cq.enqueue(200)
-// cq.enqueue(200)
-// cq.enqueue(200)
-// cq.enqueue(200)
-// cq.enqueue(200)
-// cq.enqueue(200)
 console.log(cq);
-cq.display()
-
-
-
-
-
-
-
-
-
+cq.display();
