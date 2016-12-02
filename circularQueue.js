@@ -91,36 +91,26 @@ circleQueue.prototype.reorderAbsolute = function(){
 	while(stack.length != 0){
 		this.enqueue(stack.pop())
 	}
-	for(let i = 0; i < this.dataStore.length; i++){
-		let node = this.dataStore[i];
-		if(node >= 0){
-			stack.push(this.dequeue())
-		}
-	}
-	while(stack.length != 0){
-		this.enqueue(stack.pop())
-	}
 	let originalTail = this.tail;
 	for(let i = this.head; i != originalTail; i++){
-	  if(i == this.dataStore.length){
-	    i = 0;
-	  }
+		if(i == this.dataStore.length){
+			i = 0;
+		}
 		let node = this.dataStore[i];
-	  if(node >= 0){
-	  	stack.push(this.dequeue())
-	  } else {
-	  	this.enqueue(this.dequeue())
-	  }
-  }
-  if(this.dataStore[this.head] >= 0){
-  	stack.push(this.dequeue())
-  }
-  while(stack.length != 0){
-  	this.enqueue(stack.pop());
-  }
-	console.log('CQ : ', this.dataStore);
-	console.log(' S : ', stack);
-	return this;
+		if(node >= 0){
+			this.enqueue(this.dequeue())
+		}
+	}
+}
+
+circleQueue.prototype.display = function(){
+	for(let i = this.head; i != this.tail; i++){
+		if(i == this.dataStore.length){
+			i = 0;
+		}
+		console.log(this.dataStore[i])
+	}
+	console.log(this.dataStore[this.tail])
 }
 
 var cq = new circleQueue(7);
@@ -131,12 +121,9 @@ cq.enqueue(-30)
 cq.enqueue(40)
 cq.enqueue(-40)
 cq.enqueue(50)
-cq.dequeue()
-cq.dequeue()
-cq.enqueue(100)
-cq.enqueue(100)
 console.log(cq);
-cq.grow(8)
+cq.reorderAbsolute();
+// cq.grow(8)
 // cq.enqueue(150)
 // cq.enqueue(200)
 // cq.enqueue(200)
@@ -152,8 +139,8 @@ cq.grow(8)
 // cq.enqueue(200)
 // cq.enqueue(200)
 console.log(cq);
+cq.display()
 
-// cq.reorderAbsolute();
 
 
 
