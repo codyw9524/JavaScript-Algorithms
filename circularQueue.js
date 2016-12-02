@@ -80,27 +80,25 @@ circleQueue.prototype.grow = function(size){
 
 circleQueue.prototype.reorderAbsolute = function(){
 	let stack = [];
-	for(let i = 0; i < this.dataStore.length; i++){
-		let node = this.dataStore[i];
+	let tail = this.tail;
+	while(true){
+		let node = this.dataStore[this.head];
 		if(node >= 0){
-			this.enqueue(this.dequeue())
+			this.enqueue(this.dequeue());
 		} else {
-			stack.push(this.dequeue())
+			stack.push(this.dequeue());
+		}
+		if(this.head == tail){
+			break;
 		}
 	}
 	while(stack.length != 0){
-		this.enqueue(stack.pop())
+		this.enqueue(stack.pop());
 	}
-	let originalTail = this.tail;
-	for(let i = this.head; i != originalTail; i++){
-		if(i == this.dataStore.length){
-			i = 0;
-		}
-		let node = this.dataStore[i];
-		if(node >= 0){
-			this.enqueue(this.dequeue())
-		}
+	while(this.dataStore[this.head] > 0){
+		this.enqueue(this.dequeue());
 	}
+	return this;
 }
 
 circleQueue.prototype.display = function(){
@@ -115,12 +113,12 @@ circleQueue.prototype.display = function(){
 
 var cq = new circleQueue(7);
 cq.enqueue(-10)
-cq.enqueue(20)
+cq.enqueue(-20)
 cq.enqueue(-20)
 cq.enqueue(-30)
-cq.enqueue(40)
 cq.enqueue(-40)
-cq.enqueue(50)
+cq.enqueue(-40)
+cq.enqueue(-50)
 console.log(cq);
 cq.reorderAbsolute();
 // cq.grow(8)
