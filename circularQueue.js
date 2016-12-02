@@ -81,16 +81,19 @@ circleQueue.prototype.grow = function(size){
 circleQueue.prototype.reorderAbsolute = function(){
 	let stack = [];
 	let tail = this.tail;
-	while(this.head != tail){
+	while(true){
 		let node = this.dataStore[this.head];
 		if(node >= 0){
 			this.enqueue(this.dequeue());
 		} else {
 			stack.push(this.dequeue());
 		}
+		console.log(this.head, tail)
 	}
 	if(this.dataStore[this.head] >= 0){
 		this.enqueue(this.dequeue());
+	} else {
+		stack.push(this.dequeue())
 	}
 	if(stack.length == 0){
 		return this;
@@ -121,7 +124,7 @@ cq.enqueue(-20);
 cq.enqueue(-30);
 cq.enqueue(40);
 cq.enqueue(-40);
-cq.enqueue(50);
+cq.enqueue(-50);
 console.log(cq);
 cq.reorderAbsolute();
 console.log(cq);
