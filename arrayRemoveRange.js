@@ -14,5 +14,5 @@ function arrayRemoveRange(arr, start, end=undefined){
 	return arr;
 }
 
-var result = arrayRemoveRange([0,1,2,3,4,5,6,7,8,9],50);
+var result = arrayRemoveRange([0,1,2,3,4,5,6,7,8,9],3);
 console.log(result);

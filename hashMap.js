@@ -4,23 +4,21 @@ function hashMap(capacity){
 	this.table = [];
 }
 
-hashMap.prototype.add = function(key, value, boolean){
-	boolean = boolean || false;
-	hash = key.hashCode();
-	index = mod(hash, this.capacity);
+hashMap.prototype.add = function(key, value, boolean=false){
+	let hash = key.hashCode();
+	let index = mod(hash, this.capacity);
 	if(!this.table[index]){
 		this.table[index] = [[key, value]];
 	} else { 
 		for(var i = 0; i < this.table[index].length; i++){
 			if(this.table[index][i][0] == key){
-				if(boolean == true){
+				if(boolean === true){
 					this.table[index][i][1] = value;
 					console.log('Duplicate key "' + key +  '" found!  The original value has been overwritten.');
-					return this;
 				} else {
 					console.log('Duplicate key "' + key +  '" found!  The original value was NOT overwritten.  To overwrite the value pass the optional argument "true" to the add method.');
-					return this;
 				}
+				return this;
 			}
 		}
 		this.table[index].push([key,value]);
@@ -83,8 +81,7 @@ hashMap.prototype.grow = function(){
 	return this;
 }
 
-hashMap.prototype.addMap = function(hashMap, boolean){
-	boolean = boolean || false;
+hashMap.prototype.addMap = function(hashMap, boolean=false){
 	for(var i = 0; i < hashMap.table.length; i++){
 		if(hashMap.table[i]){
 			for(var j = 0; j < hashMap.table[i].length; j++){
