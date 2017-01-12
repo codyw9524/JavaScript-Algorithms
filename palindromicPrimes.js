@@ -36,4 +36,4 @@ function isPrime(n){
 	return n > 1;
 }
 
-console.log(palPrime(100));
+console.log(isPrime(6700417));

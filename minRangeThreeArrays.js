@@ -21,4 +21,4 @@ function minimalRange(...arr) {
   return minRange;
 }
 
-console.log(minimalRange([1,2,4,15], [3,10,12], [5,10,13,17,23]));
+console.log(minimalRange([1,2,4,15], [1,10,12], [2,10,13,17,23]));
