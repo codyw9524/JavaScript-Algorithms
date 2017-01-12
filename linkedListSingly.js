@@ -6,11 +6,13 @@ function ListNode(value){
 function SinglyLinkedList(value){
 	if(value){
 		this.head = new ListNode(value);
+		this.nodeCount = 1;
 	} else {
 		this.head = null;
+		this.nodeCount = 0;
 	}
 	this.tail = null;
-	this.nodeCount = 0;
+	return this;
 }
 
 function rand(min, max) {
@@ -489,25 +491,25 @@ SinglyLinkedList.prototype.selectionSort = function(){
 	return this;
 }
 
-SinglyLinkedList.prototype.quickSort = function(pivot=this.head){
-	if(!pivot || !pivot.next){
-		return this;
-	}
-	let left = new SinglyLinkedList();
-	let right = new SinglyLinkedList();
-	let current = pivot.next;
-	while(current){
-		if(current.value > pivot.value){
-			right.addBack(current.value)
-		} else {
-			left.addBack(current.value);
-		}
-		current = current.next;
-	}
-	left.setTail();
-	right.setTail();
-	return this.quickSort(left).addBack(pivot.value).concat(this.quickSort(right.head));
-}
+// SinglyLinkedList.prototype.quickSort = function(pivot=this.head){
+// 	if(!pivot || !pivot.next){
+// 		return this;
+// 	}
+// 	let left = new SinglyLinkedList();
+// 	let right = new SinglyLinkedList();
+// 	let current = pivot.next;
+// 	while(current){
+// 		if(current.value > pivot.value){
+// 			right.addBack(current.value)
+// 		} else {
+// 			left.addBack(current.value);
+// 		}
+// 		current = current.next;
+// 	}
+// 	left.setTail();
+// 	right.setTail();
+// 	return this.quickSort(left).addBack(pivot.value).concat(this.quickSort(right.head));
+// }
 
 
 var a = generateRandomList();
