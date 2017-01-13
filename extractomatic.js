@@ -1,6 +1,5 @@
 function extract(x,y){
-	x = x.toString();
-	return parseInt(x[x.length - 1 - y])
+	return parseInt((x = x.toString())[x.length - 1 - y])
 }
 
-// console.log(extract(1824,0))
+console.log(extract(1824,0))

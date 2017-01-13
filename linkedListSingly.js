@@ -515,7 +515,7 @@ SinglyLinkedList.prototype.selectionSort = function(){
 var a = generateRandomList();
 console.log(a);
 a.display();
-console.log('***** SORTING *****');
-let b = a.quickSort();
-console.log(b);
-b.display();
+// console.log('***** SORTING *****');
+// let b = a.quickSort();
+// console.log(b);
+// b.display();
