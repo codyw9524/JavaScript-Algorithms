@@ -1,4 +1,4 @@
-console.time('squares')
+console.time('squares');
 function isSquare(n){
     return n > 0 && Math.sqrt(n) % 1 === 0;
 }
@@ -45,4 +45,4 @@ function rSumOfSquares(n){
 
 
 console.log(rSumOfSquares(70));
-console.timeEnd('squares')
+console.timeEnd('squares');
