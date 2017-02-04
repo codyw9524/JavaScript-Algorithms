@@ -39,11 +39,10 @@ function permuteArr(arr, n, sub=[], permArr=[]){
     return permArr;
 }
 
-function sumOfSquares(num){
-    return permuteArr(rGetSquares(num), num);
-    // return rGetSquares(num)
+function rSumOfSquares(n){
+    return permuteArr(rGetSquares(n), n);
 }
 
 
-console.log(sumOfSquares(100));
+console.log(rSumOfSquares(70));
 console.timeEnd('squares')

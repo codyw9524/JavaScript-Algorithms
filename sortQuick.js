@@ -4,7 +4,7 @@ function quickSort(arr) {
 	if(arr.length < 2){
 		return arr;
 	}
-	let pivot = arr[0];
+	var pivot = arr[0];
 	for(var i = 1; i < arr.length; i++){
 		if(arr[i] > pivot){
 			g_arr.push(arr[i]);

@@ -1,5 +1,7 @@
 function palindrome(str) {
+  //remove any spaces
   str = str.replace(/[^A-Za-z0-9]/g, '');
+  //convert string to lower case
   str = str.toLowerCase();
   var length = str.length;
   for(var i = 0; i < length / 2; i++){
@@ -12,4 +14,4 @@ function palindrome(str) {
 
 
 
-console.log(palindrome("eye"));
+console.log(palindrome("eye eye"));

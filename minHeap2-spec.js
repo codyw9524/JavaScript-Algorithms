@@ -36,13 +36,13 @@ MinHeap.prototype.removeSmallest = function(){
 
 MinHeap.prototype.bubbleDown = function(current_index, current){
 	if(current_index < this.dataStore.length){
-		let children = this.dataStore.slice(current_index * 2, current_index * 2 + 2)
+		let children = this.dataStore.slice(current_index * 2, current_index * 2 + 2);
 		let min = Math.min(...children);
 		while(min < current){
 			let target = this.dataStore.indexOf(min);
 			this.swap(current_index, target);
 			current_index = target;
-			children = this.dataStore.slice(current_index * 2, current_index * 2 + 2)
+			children = this.dataStore.slice(current_index * 2, current_index * 2 + 2);
 			min = Math.min(...children);
 		}
 	}
