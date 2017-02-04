@@ -2,7 +2,7 @@ function addTime(str){
     str = parseInt(str);
     str += 12;
     if(str == 24){
-        return "00"
+        return "00";
     }
     return str.toString();
 }
@@ -17,7 +17,7 @@ function convertTime(str){
     } else if(str.slice(0, 2) == "12"){
         check = true;
     }
-    str = str.slice(0, str.length -2)
+    str = str.slice(0, str.length -2);
     if(check){
         str = str.split(":");
         str[0] = addTime(str[0]);

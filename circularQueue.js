@@ -88,7 +88,6 @@ circleQueue.prototype.reorderAbsolute = function(){
 		} else {
 			stack.push(this.dequeue());
 		}
-		console.log(this.head, tail)
 	}
 	if(this.dataStore[this.head] >= 0){
 		this.enqueue(this.dequeue());
@@ -125,7 +124,11 @@ cq.enqueue(-30);
 cq.enqueue(40);
 cq.enqueue(-40);
 cq.enqueue(-50);
+console.log('Input Queue:')
 console.log(cq);
+console.log('Reordering...')
 cq.reorderAbsolute();
+console.log('Output Queue:')
 console.log(cq);
+console.log('Displaying Values:')
 cq.display();

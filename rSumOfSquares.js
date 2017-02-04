@@ -44,5 +44,5 @@ function rSumOfSquares(n){
 }
 
 
-console.log(rSumOfSquares(70));
+console.log(rSumOfSquares(30));
 console.timeEnd('squares');
