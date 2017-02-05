@@ -43,5 +43,5 @@ function rSumOfSquares(n){
 }
 
 console.time('codys');
-console.log(rSumOfSquares(70));
+console.log(rSumOfSquares(30));
 console.timeEnd('codys');

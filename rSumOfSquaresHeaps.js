@@ -6,7 +6,7 @@ function swap(array, pos1, pos2) {
     var temp = array[pos1];
     array[pos1] = array[pos2];
     array[pos2] = temp;
-};
+}
 
 function rGetSquares(n, arr=[]){
     if(isSquare(n)){
@@ -18,20 +18,16 @@ function rGetSquares(n, arr=[]){
     return rGetSquares(n - 1, arr);
 }
 
-function heapsPermute(array, x, permArr=[], n) {
-    n = n || array.length;
+function heapsPermute(array, x, permArr=[], n=array.length) {
     if (n === 1) {
-        arr = array.slice(0);
         var sum = 0;
-        for(var k = 0; k < arr.length; k ++){
-            sum += arr[k];
+        for(var k = 0; k < array.length; k ++){
+            sum += array[k];
             if(sum === x){
                 var safePush = true;
-                var squareSum = arr.slice(0, k + 1);
+                var squareSum = array.slice(0, k + 1);
                 for(var l = 0; l < permArr.length; l++){
-                    var check1 = permArr[l].slice(0);
-                    var check2 = squareSum.slice(0);
-                    if(check1.sort().join(',') === check2.sort().join(',')){
+                    if(permArr[l].sort().join(',') === squareSum.sort().join(',')){
                         safePush = false;
                     }
                 }
@@ -41,7 +37,7 @@ function heapsPermute(array, x, permArr=[], n) {
             }
         }
     } else {
-        for (var i = 1; i <= n; i += 1) {
+        for(var i = 1; i <= n; i += 1) {
             heapsPermute(array, x, permArr, n - 1);
             if (n % 2) {
                 var j = 1;
@@ -52,7 +48,7 @@ function heapsPermute(array, x, permArr=[], n) {
         }
         return permArr;
     }
-};
+}
 
 function rSumOfSquaresHeaps(n){
     return heapsPermute(rGetSquares(n), n);
@@ -60,5 +56,5 @@ function rSumOfSquaresHeaps(n){
 
 
 console.time('heaps');
-console.log(rSumOfSquaresHeaps(70));
+console.log(rSumOfSquaresHeaps(30));
 console.timeEnd('heaps');
