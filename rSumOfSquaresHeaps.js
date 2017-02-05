@@ -39,7 +39,7 @@ function heapsPermute(array, n, permArr=[], x=array.length) {
     } else {
         for(var i = 1; i <= x; i += 1) {
             heapsPermute(array, n, permArr, x - 1);
-            if (x % 2) {
+            if(x % 2) {
                 var j = 1;
             } else {
                 var j = i;
@@ -56,5 +56,5 @@ function rSumOfSquaresHeaps(n){
 
 
 console.time('heaps');
-console.log(rSumOfSquaresHeaps(30));
+console.log(rSumOfSquaresHeaps(75));
 console.timeEnd('heaps');
