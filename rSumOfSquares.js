@@ -1,4 +1,3 @@
-console.time('squares');
 function isSquare(n){
     return n > 0 && Math.sqrt(n) % 1 === 0;
 }
@@ -43,6 +42,6 @@ function rSumOfSquares(n){
     return permuteArr(rGetSquares(n), n);
 }
 
-
-console.log(rSumOfSquares(30));
-console.timeEnd('squares');
+console.time('codys');
+console.log(rSumOfSquares(70));
+console.timeEnd('codys');
