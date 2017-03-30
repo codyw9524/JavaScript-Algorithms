@@ -69,7 +69,7 @@ describe('minheap', function(){
 			expect(heap.dataStore[1]).toBe(true_min);
 			expect(heap.removeSmallest()).toBe(true_min);
 		}
-		expect(heap.dataStore.length).toBe(1)
+		expect(heap.dataStore.length).toBe(1);
 		console.log(heap);
 	})
 })

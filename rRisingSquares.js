@@ -16,4 +16,3 @@ function rSquares(num, subOdd, subEven){
 }
 
 console.log(rSquares(5));
-

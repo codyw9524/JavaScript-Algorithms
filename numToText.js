@@ -1,4 +1,5 @@
 function numToText(num){
+	console.log(num);
 	var output = '';
 	var ones = {
 		'1': 'one',
@@ -45,7 +46,7 @@ function numToText(num){
 		'9' : 'nineteen',
 	};
 	var library = [ones, tens, hundreds];
-	var places = ['', ' thousand ', ' million ', ' billion ',' trillion ', ' quadrillion ', ' quintillion ', ' sextillion ', ];
+	var places = ['', ' thousand ', ' million ', ' billion ', ' trillion ', ' quadrillion ', ' quintillion ', ' sextillion ', ];
 	num = breakIntoThrees(num);
 	for(let i = 0; i < num.length; i++){
 		output = threeToText(num[i], library, teens) + places[i] + output;
@@ -77,7 +78,7 @@ function threeToText(str, library, teens){
 		if(str[i] in library[j]){
 			output = library[j][str[i]] + ' ' + output;
 		}
-, 		j++;
+ 		j++;
 	}
 	return output;
 }

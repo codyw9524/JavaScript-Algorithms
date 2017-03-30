@@ -2,7 +2,7 @@ function isSquare(n){
     return n > 0 && Math.sqrt(n) % 1 === 0;
 }
 
-function swap(array, pos1, pos2) {
+function swap(array, pos1, pos2){
     var temp = array[pos1];
     array[pos1] = array[pos2];
     array[pos2] = temp;
@@ -23,7 +23,7 @@ function heapsPermute(array, n, permArr=[], x=array.length) {
         var sum = 0;
         for(var k = 0; k < array.length; k ++){
             sum += array[k];
-            if(sum === n){//n
+            if(sum === n){
                 var safePush = true;
                 var squareSum = array.slice(0, k + 1);
                 for(var l = 0; l < permArr.length; l++){

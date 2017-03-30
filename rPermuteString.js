@@ -1,7 +1,5 @@
-function permStr(str, sub, arr){
+function permStr(str, sub="", arr=[]){
 	var length = str.length;
-	arr = arr || [];
-	sub = sub || "";
 	if(length == 0){
 		arr.push(sub);
 	}

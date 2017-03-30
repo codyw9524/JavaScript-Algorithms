@@ -1,8 +1,4 @@
-function biSearch(arr, num, min, max){
-	if(!max && !min){
-		max = arr.length - 1;
-		min = 0;
-	}
+function biSearch(arr, num, min=0, max=arr.length - 1){
 	var i = Math.floor((max + min)/2);
 	if(arr[i] == num){
 		return true;

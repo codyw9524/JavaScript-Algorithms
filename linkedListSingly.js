@@ -425,6 +425,8 @@ SinglyLinkedList.prototype.isLoop = function(){
 		if(hare == tortoise || hare.next == tortoise){
 			return true;
 		}
+		tortoise = tortoise.next;
+		hare = hare.next.next;
 	}
 	return false;
 }
@@ -515,6 +517,8 @@ SinglyLinkedList.prototype.selectionSort = function(){
 var a = generateRandomList();
 console.log(a);
 a.display();
+// a.head.next.next.next.next = a.head;
+console.log(a.isLoop())
 // console.log('***** SORTING *****');
 // let b = a.quickSort();
 // console.log(b);
