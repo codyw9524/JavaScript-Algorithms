@@ -123,11 +123,14 @@ cq.enqueue(-20);
 cq.enqueue(-30);
 cq.enqueue(40);
 cq.enqueue(-40);
+cq.dequeue()
+cq.enqueue(-50);
+cq.enqueue(-50);
 cq.enqueue(-50);
 console.log('Input Queue:')
 console.log(cq);
 console.log('Reordering...')
-cq.reorderAbsolute();
+cq.grow(20);
 console.log('Output Queue:')
 console.log(cq);
 console.log('Displaying Values:')

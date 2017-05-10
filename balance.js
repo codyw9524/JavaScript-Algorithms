@@ -29,11 +29,11 @@ console.log(result2);
 
 function balance2(arr){
 	var sum = 0;
-	for(i in arr){
+	for(let i = 0; i < arr.length; i++){
 		sum += arr[i]
 	}
 	var halfSum = 0;
-	for(i in arr){
+	for(let i = 0; i < arr.length; i++){
 		if(sum / 2 == halfSum){
 			return true
 		}
