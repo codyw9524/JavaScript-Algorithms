@@ -1,6 +1,4 @@
-function rStrSub(str, sub, arr){
-	sub = sub || "";
-	arr = arr || [];
+function rStrSub(str, sub='', arr=[]){
 	if(str.length === 0){
 		arr.push(sub);
 	} else {

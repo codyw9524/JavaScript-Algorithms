@@ -15,5 +15,16 @@ function rFactorial(num){
 	}
 }
 
-var result = rFactorial(5);
-console.log(result);
+// var result = rFactorial(5);
+// console.log(result);
+
+
+function rSigma(n){
+	if(n === 1){
+		return 1;
+	}
+	return rSigma(n-1) + n;
+}
+
+console.log(rSigma(5))
+console.log(5+4+3+2+1)

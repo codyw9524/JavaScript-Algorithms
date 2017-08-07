@@ -1,9 +1,10 @@
 function ListNode(value){
 	this.value = value;
 	this.next = null;
+	this.child = null;
 }
 
-function SinglyLinkedList(value){
+function SinglyLinkedList(value=null){
 	if(value){
 		this.head = new ListNode(value);
 		this.nodeCount = 1;
@@ -383,8 +384,7 @@ SinglyLinkedList.prototype.setTail = function(){
 	return this;
 }
 
-SinglyLinkedList.prototype.getRandomNode = function(returnValue){
-	returnValue = returnValue || false;
+SinglyLinkedList.prototype.getRandomNode = function(returnValue=false){
 	if(!this.head){
 		return null;
 	}
@@ -413,12 +413,8 @@ SinglyLinkedList.prototype.copyList = function(){
 }
 
 SinglyLinkedList.prototype.isLoop = function(){
-	if(!this.head){
-		return false;
-	}
-	if(!this.head.next){
-		return false;
-	}
+	if(!this.head){ return false; }
+	if(!this.head.next){ return false; }
 	var tortoise = this.head;
 	var hare = this.head.next;
 	while(tortoise && hare && hare.next){
@@ -431,16 +427,46 @@ SinglyLinkedList.prototype.isLoop = function(){
 	return false;
 }
 
-SinglyLinkedList.prototype.rLength = function(node, count){
-	if(!this.head) {return null;}
-	if(node === undefined) {node = this.head;}
-	count = count || 0;
+SinglyLinkedList.prototype.rIsLoop = function(tortoise=null, hare=null){
+	if(!this.head){ return false; }
+	if(!this.head.next){ return false; }
+	tortoise = this.head;
+	hare = this.head.next;
+	if(!tortoise || !hare || !hare.next){
+		return false;
+	}
+	if(hare == tortoise || hare.next == tortoise){
+		return true;
+	}
+	return this.rIsLoop(tortoise.next, hare.next.next)
+}
+
+SinglyLinkedList.prototype.rLength = function(node, count=0){
+	if(!this.head) { return null; }
+	if(node === undefined) { node = this.head; }
 	if(!node){
 		return count;
 	} else {
 		count++;
 		return this.rLength(node.next, count);
 	}
+}
+
+SinglyLinkedList.prototype.flattenChild = function(){
+	let current = this.head;
+	while(current){
+		if(current.child){
+			let next_parent = current.next;
+			current.next = current.child;
+			let child_runner = current.child;
+			while(child_runner.next){
+				child_runner = child_runner.next;
+			}
+			child_runner.next = next_parent;
+		}
+		current = current.next;
+	}
+	return this;
 }
 
 SinglyLinkedList.prototype.bubbleSort = function(){
@@ -493,6 +519,21 @@ SinglyLinkedList.prototype.selectionSort = function(){
 	return this;
 }
 
+SinglyLinkedList.prototype.setupLoop = function(n){
+	let current = this.head;
+	while(current.next){
+		n--;
+		if(n == 0){
+			var target = current;
+		}
+		current = current.next;
+	}
+	if(target){
+		current.next = target;
+	}
+	return this;
+}
+
 // SinglyLinkedList.prototype.quickSort = function(pivot=this.head){
 // 	if(!pivot || !pivot.next){
 // 		return this;
@@ -515,11 +556,27 @@ SinglyLinkedList.prototype.selectionSort = function(){
 
 
 var a = generateRandomList();
-console.log(a);
-a.display();
-// a.head.next.next.next.next = a.head;
-console.log(a.isLoop())
-// console.log('***** SORTING *****');
-// let b = a.quickSort();
-// console.log(b);
+a.display()
+
+console.log("--- Creating Loop --")
+a.setupLoop(2);
+console.log(a.rIsLoop())
+// a.display();
+// var b = generateRandomList();
+// var c = generateRandomList();
+
+// a.head.next.child = b.head
+// b.head.next.child = c.head;
+
+// console.log("--- List A ---")
+// a.display();
+// console.log("--- List B ---")
 // b.display();
+// console.log("--- List C ---")
+// c.display();
+// console.log("Total Nodes: ", a.rLength() + b.rLength() + c.rLength())
+
+// a.flattenChild()
+// console.log("--- List A (flattened) ---")
+// a.display();
+// console.log("Total Nodes: ", a.rLength());

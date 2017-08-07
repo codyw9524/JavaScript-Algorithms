@@ -16,7 +16,9 @@ function get_combos(arr, sub=[], perm=[]){
 	if(length === 0){
 		return arr;
 	}
-	for(var i = 0; i < length; i++){
-		var sub2
-	}
+	// for(var i = 0; i < length; i++){
+	// 	var sub2
+	// }
 }
+
+console.log(rand_arr())

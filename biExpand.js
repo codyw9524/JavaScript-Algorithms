@@ -5,6 +5,7 @@ function biExpand(str, arr){
 
 	var first = str.split("?", 1)[0];
 	var second = str.slice(first.length + 1);
+	console.log(first, second)
 
 	if(first.length == str.length){
 		arr.push(first);

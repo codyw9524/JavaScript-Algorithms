@@ -7,6 +7,7 @@ function arrayRotate(arr, n){
   	temp = arr[arr.length - 1];
   	for(var i = arr.length - 2;i > -1; i--){
       arr[i + 1] = arr[i];
+      console.log(arr)
     }
     arr[0] = temp;
   }

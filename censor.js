@@ -5,14 +5,17 @@
 function censor(word, string){
 	var res = string.split(' ');
 	var i = res.indexOf('test');
+	if(i === -1){
+		return string;
+	}
 	var word = res[i];
 	var newString = "";
-	for(var i = 0; i < word.length; i++){
+	for(var j = 0; j < word.length; j++){
 		newString += randomString();
 	}
 	res[i] = newString;
 	var censored_string = res.join(' ');
-	return censored_string;
+	return censor(word, censored_string);
 }
 
 function randomString(){
@@ -21,5 +24,5 @@ function randomString(){
 	return string[i];
 }
 
-var result = censor('test', 'this is a test');
+var result = censor('test', 'this is a test test test test');
 console.log(result);

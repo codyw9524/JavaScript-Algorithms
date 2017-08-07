@@ -2,9 +2,15 @@ function Trie(){
 	this.root = new TrieNode();
 }
 
+TrieNode {
+	word: 'J',
+	pointers:[ { word: 'JO', pointers:[]}, {word: 'JA'}]
+}
+
 function TrieNode(){
 	this.pointers = [];
-	this.value = null;
+	this.word = null;
+	this.character = '';
 }
 
 function objIndexOf(node, char){

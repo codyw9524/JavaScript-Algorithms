@@ -8,49 +8,80 @@ function binarySearchTree(){
 	this.root = null;
 }
 
-binarySearchTree.prototype.add = function(value){
+binarySearchTree.prototype.add = function(value, node=this.root){
 	var newNode = new bstNode(value);
 	if(!this.root){
 		this.root = newNode;
-	} else {
-		var current = this.root;
-		while(current){
-			if(value > current.value){
-				if(!current.right){
-					current.right = newNode;
-					break;
-				} else {
-					current = current.right;
-				}
-			} else {
-				if(!current.left){
-					current.left = newNode;
-					break;
-				} else {
-					current = current.left;
-				}
-			}
-		}
+		return this;
 	}
-	return this;
+	if(value > node.value && !node.right){
+		node.right = newNode;
+		return this;
+	}
+	if(value <= node.value && !node.left){
+		node.left = newNode;
+		return this;
+	}
+	if(value > node.value){
+		return this.add(value, node.right);
+	} else {
+		return this.add(value, node.left);
+	}
+
+	//***iteratively*** 
+	// else {
+	// 	var current = this.root;
+	// 	while(current){
+	// 		if(value > current.value){
+	// 			if(!current.right){
+	// 				current.right = newNode;
+	// 				break;
+	// 			} else {
+	// 				current = current.right;
+	// 			}
+	// 		} else {
+	// 			if(!current.left){
+	// 				current.left = newNode;
+	// 				break;
+	// 			} else {
+	// 				current = current.left;
+	// 			}
+	// 		}
+	// 	}
+	// }
+	// return this;
 }
 
-binarySearchTree.prototype.contains = function(value){
-	if(!this.root){
-		return false;
+binarySearchTree.prototype.contains = function(value, node=this.root){
+	//***iteratively***
+	// if(!this.root){
+	// 	return false;
+	// }
+	// var current = this.root;
+	// while(current){
+	// 	if(current.value == value){
+	// 		return true;
+	// 	}
+	// 	if(value > current.value){
+	// 		current = current.right;
+	// 	} else {
+	// 		current = current.left;
+	// 	}
+	// }
+	// return false;
+
+	//***recursively***
+	if(!node){
+		return false
 	}
-	var current = this.root;
-	while(current){
-		if(current.value == value){
-			return true;
-		}
-		if(value > current.value){
-			current = current.right;
-		} else {
-			current = current.left;
-		}
+	if(node.value == value){
+		return true
 	}
-	return false;
+	if(value > node.value){
+		return this.contains(value, node.right);
+	} else {
+		return this.contains(value, node.left);
+	}
 }
 
 binarySearchTree.prototype.min = function(node=this.root){
@@ -95,6 +126,7 @@ binarySearchTree.prototype.max = function(node=this.root){
 	return node.value;
 }
 
+
 binarySearchTree.prototype.isEmpty = function(){
 	if(!this.root){
 		return true;
@@ -103,19 +135,48 @@ binarySearchTree.prototype.isEmpty = function(){
 	}
 }
 
-binarySearchTree.prototype.size = function(node=this.root){
-	if(!this.root){
-		return null;
+binarySearchTree.prototype.traverse = function(callback, node=this.root){
+	// let count = 0;
+	function inOrder(node){
+		if(node.left){
+			inOrder(node.left)
+		}
+		// console.log(node.value);
+		// count++
+		if(callback){
+			callback(node);
+		}
+
+		if(node.right){
+			inOrder(node.right);
+		}
 	}
-	if(!node){
-		return 0;
-	}
-	if(!node.left && !node.right){
-		return 1;
-	} else {
-		return this.size(node.left) + this.size(node.right);
-	}
+
+	inOrder(this.root);
 }
+
+binarySearchTree.prototype.newSize = function(){
+	let count = 0;
+	this.traverse(function(node){
+		count++;
+		console.log(node.value)
+	})
+	return count;
+}
+
+// binarySearchTree.prototype.size = function(node=this.root){
+// 	if(!this.root){
+// 		return null;
+// 	}
+// 	if(!node){
+// 		return 0;
+// 	}
+// 	if(!node.left && !node.right){
+// 		return 1;
+// 	} else {
+// 		return this.size(node.left) + this.size(node.right);
+// 	}
+// }
 
 binarySearchTree.prototype.depthFirstSearch = function(node=this.root){
 	if(!this.root){
@@ -201,8 +262,18 @@ function arrayToBST(arr, output=new binarySearchTree()){
 	return output;
 }
 
-let a = arrayToBST([1,2,3,4,5,6,7,8,9,10]);
-console.log(a.isBalanced());
+// let a = arrayToBST([1,2,3,4,5,6,7,8,9,10]);
+let a = new binarySearchTree()
+a.add(15)
+a.add(10)
+a.add(5)
+a.add(35)
+a.add(1)
+// a.traverse()
+// console.log(a.isBalanced());
+// console.log(a.contains(100))
+console.log('new', a.newSize())
+console.log('old', a.size())
 
 // describe('bst', function(){
 // 	it('has a valid tree', function(){

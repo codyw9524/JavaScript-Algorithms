@@ -11,3 +11,5 @@ function titleCase(str) {
   str = str.join(' ');
   return str;
 }
+
+console.log(titleCase('a brave new world'))

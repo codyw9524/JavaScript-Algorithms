@@ -1,6 +1,4 @@
-function rSquares(num, subOdd, subEven){
-	subOdd = subOdd || '';
-	subEven = subEven || '';
+function rSquares(num, subOdd='', subEven='', arr=[]){
 	if(num < 1){
 		return subOdd + subEven;
 	}
@@ -15,4 +13,21 @@ function rSquares(num, subOdd, subEven){
 	return rSquares(num - 1, subOdd, subEven);
 }
 
-console.log(rSquares(5));
+console.log(rSquares(8));
+
+
+//With arrays
+
+function rSquaresArray(num, odds=[], evens=[]){
+	if(num < 1){
+		return odds.concat(evens).join(', ');
+	}
+	if(num % 2 == 0){
+		evens.push(num * num);
+	} else {
+		odds.unshift(num * num);
+	}
+	return rSquaresArray(num - 1, odds, evens);
+}
+
+console.log(rSquaresArray(8));
