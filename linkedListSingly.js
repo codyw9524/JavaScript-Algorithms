@@ -419,7 +419,7 @@ SinglyLinkedList.prototype.isLoop = function(){
 	var hare = this.head.next;
 	while(tortoise && hare && hare.next){
 		if(hare == tortoise || hare.next == tortoise){
-			return true;
+			return tortoise;
 		}
 		tortoise = tortoise.next;
 		hare = hare.next.next;
@@ -436,9 +436,28 @@ SinglyLinkedList.prototype.rIsLoop = function(tortoise=null, hare=null){
 		return false;
 	}
 	if(hare == tortoise || hare.next == tortoise){
-		return true;
+		return tortoise;
 	}
 	return this.rIsLoop(tortoise.next, hare.next.next)
+}
+
+SinglyLinkedList.prototype.breakLoop = function(tortoise=null, hare=null){
+	let runner = this.head;
+	let prev;
+	while(runner){
+		while(true){
+			prev = tortoise;
+			tortoise = tortoise.next;
+			if(tortoise == runner){
+				prev.next = null;
+				return this;
+			}
+			if(tortoise == hare){
+				break;
+			}
+		}
+		runner = runner.next;
+	}
 }
 
 SinglyLinkedList.prototype.rLength = function(node, count=0){
@@ -534,33 +553,20 @@ SinglyLinkedList.prototype.setupLoop = function(n){
 	return this;
 }
 
-// SinglyLinkedList.prototype.quickSort = function(pivot=this.head){
-// 	if(!pivot || !pivot.next){
-// 		return this;
-// 	}
-// 	let left = new SinglyLinkedList();
-// 	let right = new SinglyLinkedList();
-// 	let current = pivot.next;
-// 	while(current){
-// 		if(current.value > pivot.value){
-// 			right.addBack(current.value)
-// 		} else {
-// 			left.addBack(current.value);
-// 		}
-// 		current = current.next;
-// 	}
-// 	left.setTail();
-// 	right.setTail();
-// 	return this.quickSort(left).addBack(pivot.value).concat(this.quickSort(right.head));
-// }
-
-
 var a = generateRandomList();
+console.log("--- Before Loop --")
 a.display()
 
 console.log("--- Creating Loop --")
-a.setupLoop(2);
-console.log(a.rIsLoop())
+a.setupLoop(rand(2, a.nodeCount));
+target = a.isLoop();
+if(target){
+	a.breakLoop(target, target);
+	console.log("--- After Breaking Loop --")
+	a.display();
+} else {
+	console.log("--- FAILED TO MAKE LOOP ---")
+}
 // a.display();
 // var b = generateRandomList();
 // var c = generateRandomList();
